@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private val refreshRunnable = object : Runnable {
         override fun run() {
             refreshLists()
-            handler.postDelayed(this, 2000) // Cập nhật danh sách mỗi 2 giây
+            handler.postDelayed(this, 2000)
         }
     }
 
@@ -158,12 +158,12 @@ class MainActivity : AppCompatActivity() {
             binding.tvStatus.text = "● Captive Portal ĐANG HOẠT ĐỘNG"
             binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.accent_color))
             binding.btnToggleService.text = "TẮT DỊCH VỤ CAPTIVE PORTAL"
-            binding.btnToggleService.setBackgroundColor(ContextCompat.getColor(this, R.color.danger))
+            binding.btnToggleService.backgroundTintList = ContextCompat.getColorStateList(this, R.color.danger)
         } else {
             binding.tvStatus.text = "○ Dịch vụ đang tắt"
             binding.tvStatus.setTextColor(ContextCompat.getColor(this, R.color.danger))
             binding.btnToggleService.text = "BẬT CỔNG CAPTIVE PORTAL"
-            binding.btnToggleService.setBackgroundColor(ContextCompat.getColor(this, R.color.primary_color))
+            binding.btnToggleService.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_color)
         }
     }
 
