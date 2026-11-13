@@ -8,12 +8,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.portalhotspot.app.server.CaptivePortalServer
 import com.portalhotspot.app.server.HotspotProxyServer
 
 class PortalService : Service() {
 
+    private val TAG = "PortalService"
     private var portalServer: CaptivePortalServer? = null
     private var proxyServer: HotspotProxyServer? = null
 
@@ -24,9 +26,12 @@ class PortalService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val action = intent?.action
+        Log.d(TAG, "onStartCommand received action: $action")
         if (action == ACTION_STOP) {
+            stopServers()
             stopForeground(STOP_FOREGROUND_REMOVE)
             stopSelf()
+            isRunning = false
             return START_NOT_STICKY
         }
 
@@ -45,7 +50,7 @@ class PortalService : Service() {
                 portalServer = CaptivePortalServer(this, 8080)
                 portalServer?.start()
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e(TAG, "Failed to start portalServer: ${e.message}")
             }
         }
 
@@ -54,17 +59,22 @@ class PortalService : Service() {
                 proxyServer = HotspotProxyServer(this, 8282)
                 proxyServer?.start()
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e(TAG, "Failed to start proxyServer: ${e.message}")
             }
         }
     }
 
     private fun stopServers() {
-        portalServer?.stop()
-        portalServer = null
-        proxyServer?.stop()
-        proxyServer = null
+        try {
+            portalServer?.stop()
+            portalServer = null
+        } catch (e: Exception) {}
+        try {
+            proxyServer?.stop()
+            proxyServer = null
+        } catch (e: Exception) {}
         isRunning = false
+        Log.d(TAG, "PortalService servers stopped")
     }
 
     override fun onDestroy() {
