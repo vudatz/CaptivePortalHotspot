@@ -2,7 +2,11 @@
     <string name="app_name">Hotspot Portal</string>
     <string name="start_service">Bật Cổng Captive Portal</string>
     <string name="stop_service">Tắt Cổng Captive Portal</string>
-    <string name="tab_dashboard">Trang Chủ</string>
-    <string name="tab_accounts">Quản Lý Tài Khoản</string>
-    <string name="tab_clients">Thiết Bị Online</string>
+    <string name="status_title">TRẠNG THÁI HỆ THỐNG</string>
+    <string name="status_running">● Captive Portal ĐANG HOẠT ĐỘNG</string>
+    <string name="status_stopped">○ Dịch vụ đang tắt</string>
+    <string name="server_info">Cổng Portal: 8080 | Cổng Proxy: 8282</string>
+    <string name="accounts_title">DANH SÁCH TÀI KHOẢN</string>
+    <string name="btn_add_account">+ Thêm Mới</string>
+    <string name="clients_title">THIẾT BỊ ONLINE (CONNECTED CLIENTS)</string>
 </resources>

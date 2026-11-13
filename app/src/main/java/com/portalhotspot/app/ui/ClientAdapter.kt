@@ -22,13 +22,13 @@ class ClientAdapter(
         val client = clients[position]
         holder.binding.tvClientIp.text = "IP: ${client.ip}"
 
-        val authStatus = if (client.isAuthenticated) {
-            "User: ${client.username ?: "Đang online"} | Đã tải: ${String.format("%.2f MB", client.getSessionMb())}"
+        val authStr = if (client.isAuthenticated) {
+            "User: ${client.username ?: "Chưa rõ"} | Đã dùng: ${String.format("%.2f", client.getSessionMb())} MB"
         } else {
-            "Chưa đăng nhập (Bị chặn ra Internet)"
+            "Chưa đăng nhập (Chờ xác thực)"
         }
-        holder.binding.tvClientStatus.text = authStatus
 
+        holder.binding.tvClientStatus.text = authStr
         holder.binding.btnKickClient.setOnClickListener {
             onKickClick(client)
         }

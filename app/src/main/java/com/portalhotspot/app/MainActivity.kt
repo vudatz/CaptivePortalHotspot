@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private val refreshRunnable = object : Runnable {
         override fun run() {
             refreshLists()
+            updateServiceStateUI()
             handler.postDelayed(this, 2000)
         }
     }

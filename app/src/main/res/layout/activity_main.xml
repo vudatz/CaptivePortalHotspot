@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F5F9">
+    android:background="#F8FAFC">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TRẠNG THÁI HỆ THỐNG"
+                        android:text="@string/status_title"
                         android:textStyle="bold"
                         android:textSize="13sp"
                         android:textColor="@color/text_muted" />
@@ -56,7 +56,7 @@
                         android:id="@+id/tvStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dịch vụ đang tắt"
+                        android:text="@string/status_stopped"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/danger"
@@ -66,7 +66,7 @@
                         android:id="@+id/tvServerInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cổng Portal: 8080 | Cổng Proxy: 8282"
+                        android:text="@string/server_info"
                         android:textSize="13sp"
                         android:textColor="@color/text_muted"
                         android:layout_marginTop="4dp" />
@@ -75,7 +75,7 @@
                         android:id="@+id/btnToggleService"
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
-                        android:text="BẬT CỔNG CAPTIVE PORTAL"
+                        android:text="@string/start_service"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:layout_marginTop="16dp"
@@ -106,7 +106,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="DANH SÁCH TÀI KHOẢN"
+                            android:text="@string/accounts_title"
                             android:textStyle="bold"
                             android:textSize="14sp"
                             android:textColor="@color/black"
@@ -116,7 +116,7 @@
                             android:id="@+id/btnCreateAccount"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
-                            android:text="+ Thêm Mới"
+                            android:text="@string/btn_add_account"
                             android:textSize="12sp"
                             android:layout_alignParentEnd="true"
                             app:cornerRadius="8dp" />
@@ -148,7 +148,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="THIẾT BỊ ONLINE (CONNECTED CLIENTS)"
+                        android:text="@string/clients_title"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:textColor="@color/black" />
