@@ -1,0 +1,43 @@
+package com.portalhotspot.app.ui
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.portalhotspot.app.databinding.ItemClientBinding
+import com.portalhotspot.app.models.ConnectedClient
+
+class ClientAdapter(
+    private var clients: List<ConnectedClient>,
+    private val onKickClick: (ConnectedClient) -> Unit
+) : RecyclerView.Adapter<ClientAdapter.ViewHolder>() {
+
+    class ViewHolder(val binding: ItemClientBinding) : RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemClientBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val client = clients[position]
+        holder.binding.tvClientIp.text = "IP: ${client.ip}"
+
+        val authStatus = if (client.isAuthenticated) {
+            "User: ${client.username ?: "Đang online"} | Đã tải: ${String.format("%.2f MB", client.getSessionMb())}"
+        } else {
+            "Chưa đăng nhập (Bị chặn ra Internet)"
+        }
+        holder.binding.tvClientStatus.text = authStatus
+
+        holder.binding.btnKickClient.setOnClickListener {
+            onKickClick(client)
+        }
+    }
+
+    override fun getItemCount(): Int = clients.size
+
+    fun updateData(newClients: List<ConnectedClient>) {
+        clients = newClients
+        notifyDataSetChanged()
+    }
+}

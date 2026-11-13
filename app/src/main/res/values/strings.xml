@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hotspot Portal</string>
+    <string name="start_service">Bật Cổng Captive Portal</string>
+    <string name="stop_service">Tắt Cổng Captive Portal</string>
+    <string name="tab_dashboard">Trang Chủ</string>
+    <string name="tab_accounts">Quản Lý Tài Khoản</string>
+    <string name="tab_clients">Thiết Bị Online</string>
+</resources>
